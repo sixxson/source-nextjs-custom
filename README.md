@@ -35,10 +35,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-# Custom tailwind 
-
-  
-
 # Custom Hook
 
   ## 📌 useInitSwiperColumnAuto
@@ -362,3 +358,41 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
     Computes the offset relative to the central container (.default-container-js) so the element aligns with the container edge while extending to the viewport edge.
 
     If the window width is smaller than the unstick-min value (default 1200px), the element's style is removed so it reverts to normal layout.
+
+  ## 📌 useFancybox
+
+    useFancybox is a React hook that integrates Fancybox for image galleries, videos, or other lightbox content.
+
+    It allows you to easily bind Fancybox to a container and manage its lifecycle in a React-friendly way
+
+  ### 📦 Import the Hook
+
+    import useFancybox from "@/hooks/useFancybox";
+
+  ### 🧩 Usage
+
+    Call the hook in a client component and bind Fancybox to a container element using the returned setter.
+
+  + Exp:
+
+     const [fancyboxRef] = useFancybox({
+      // Your custom options
+      });
+
+      return (
+        <div ref={fancyboxRef}>
+          <a data-fancybox="gallery" href="https://lipsum.app/id/60/1600x1200">
+            <img src="https://lipsum.app/id/60/200x150" alt="Sample image #1" />
+          </a>
+        </div>
+      )
+
+  ### ⚙️ How It Works
+
+    The hook uses useState to store a reference to the root container.
+
+    When the root is set, it calls: Fancybox.bind(root, "[data-fancybox]", options);
+
+    Automatically unbinds Fancybox when the component unmounts or the root changes.
+
+    Accepts any FancyboxOptions for customization, e.g., Toolbar, Thumbnails, infinite, etc.
