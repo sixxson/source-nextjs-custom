@@ -1,0 +1,80 @@
+/* ================================
+    ZOOM IMAGE
+================================ */
+
+/* transition-300 + will-change-transform */
+.zoom-img-parent .img-zoom img,
+.zoom-img img {
+  transition: all 0.3s ease;
+  will-change: transform;
+}
+
+/* hover scale */
+.zoom-img-parent:hover .img-zoom img,
+.zoom-img:hover img {
+  transform: scale(1.05);
+}
+
+/* ================================
+    RING ANIMATIONS
+================================ */
+
+.ring-food {
+  animation: ring-food 1.5s infinite ease-in-out alternate;
+}
+
+.ring-chili {
+  animation: ring-chili 1.5s infinite ease-in-out alternate;
+}
+
+.ring-food-footer {
+  animation: ring-food-footer 1.5s infinite ease-in-out alternate;
+}
+
+/* --- keyframes --- */
+
+@keyframes ring-chili {
+  0% {
+    transform: rotate(8deg);
+  }
+
+  100% {
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes ring-food-footer {
+  0% {
+    transform: rotate(4deg);
+  }
+
+  100% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes ring-food {
+  0% {
+    transform: rotate(300deg);
+  }
+
+  100% {
+    transform: rotate(330deg);
+  }
+}
+
+/* ================================
+    FADE IN DOWN
+================================ */
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
