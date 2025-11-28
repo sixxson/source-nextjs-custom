@@ -1,13 +1,14 @@
+'use client'
 import { useEffect } from "react";
 import lozad from "lozad";
-import { mg } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 export default function ImageCustoms({
-  src,
+  src='/img/1.jpg',
   className,
   alt,
 }: {
-  src: string;
+  src?: string;
   className?: string;
   alt?: string;
 }) {
@@ -20,7 +21,7 @@ export default function ImageCustoms({
     <img
       data-src={src}
       alt={alt}
-      className={mg("lozad", className)}
+      className={cn("lozad", className)}
     />
   );
 }
