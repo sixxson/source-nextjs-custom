@@ -15,17 +15,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`font-primary antialiased`}
       >
-        <Providers>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system">
-            {children}
-          </ThemeProvider>
-        </Providers>
+        <main>
+          <Providers>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system">
+              {children}
+            </ThemeProvider>
+          </Providers>
+        </main>
       </body>
     </html>
   );

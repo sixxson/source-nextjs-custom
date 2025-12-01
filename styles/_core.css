@@ -2,3 +2,9 @@
 @import "./core/_font-awesome.css";
 @import "./core/_slide.css";
 @import "./core/animate.css";
+@import "./_utilities.scss";
+
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+@import "swiper/css/effect-fade";

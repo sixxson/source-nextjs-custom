@@ -1,22 +1,32 @@
 @import "@/styles/_core.css";
-@import "@/styles/_utilities.css";
 
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
 
-
-:root {
-  --font-text: '';
-}
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
 
+html {
+  scroll-behavior: smooth
+}
+
 body {
   @apply font-primary
+}
+
+.format-content {
+  p {
+    @apply mb-3
+  }
+
+  ul {
+    @apply list-disc pl-5 flex flex-col gap-3 mb-3
+  }
+
 }
 
 /* loading image */
@@ -51,7 +61,11 @@ body {
   filter: blur(0);
 }
 
-
+@layer components{
+  .btn-primary{
+    @apply bg-transparent border-black hover:text-white hover:bg-black rounded-full body-2 py-3 px-6 uppercase ;
+  }
+}
 
 /* base */
 @layer base {
@@ -133,4 +147,3 @@ body {
     color: var(--foreground);
   }
 }
-

@@ -8,15 +8,10 @@ export function useColumnAutoSwiper(
 
 ) {
   useEffect(() => {
-    // lấy tất cả container swiper dạng .swiper-column-auto
     const containers = document.querySelectorAll<HTMLElement>(".swiper-column-auto");
-
     containers.forEach((container, index) => {
-      // tạo class ID riêng cho mỗi nhóm swiper
       const uniqueClass = `swiper-column-auto-id-${index}`;
       container.classList.add(uniqueClass);
-
-      // đọc config từ class + attribute
       const config = {
         loop: container.classList.contains("swiper-loop"),
         touchMove: container.classList.contains("allow-touchMove") || true,
@@ -29,12 +24,8 @@ export function useColumnAutoSwiper(
         time: Number(container.getAttribute("data-time")) || 0,
         autoplay: container.classList.contains("autoplay"),
       };
-
-      // phần .swiper bên trong container
       const swiperEl = container.querySelector<HTMLElement>(".swiper");
       if (!swiperEl) return;
-
-      // khởi tạo swiper
       new Swiper(swiperEl, {
         modules: [Navigation, Pagination, Mousewheel, Autoplay],
         speed: 3000,

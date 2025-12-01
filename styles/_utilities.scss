@@ -1,0 +1,210 @@
+@tailwind utilities;
+
+@layer utilities {
+  $colCount: 12 !default;
+  $grid-breakpoints: (
+    sm: theme("screens.sm"),
+    md: theme("screens.md"),
+    lg: theme("screens.lg"),
+    xl: theme("screens.xl"),
+  ) !default;
+
+  $spacing-mobile: theme("spacing.mobile");
+  $spacing-md: theme("spacing.md");
+  $spacing-lg: theme("spacing.lg");
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -8px;
+    margin-right: -8px;
+    @apply gap-y-4 xl:gap-y-10;
+
+    @screen xl {
+      margin-left: clamp(
+        -20px,
+        calc(-20 / 1920 * 100rem),
+        calc(-20 / 1920 * 100rem)
+      );
+      margin-right: clamp(
+        -20px,
+        calc(-20 / 1920 * 100rem),
+        calc(-20 / 1920 * 100rem)
+      );
+
+      &.low-spacing {
+        margin-left: clamp(
+          -8px,
+          calc(-8 / 1920 * 100rem),
+          calc(-8 / 1920 * 100rem)
+        );
+        margin-right: clamp(
+          -8px,
+          calc(-8 / 1920 * 100rem),
+          calc(-8 / 1920 * 100rem)
+        );
+
+        > [class*="col-"] {
+          @screen xl {
+            padding-right: clamp(
+              8px,
+              calc(8 / 1920 * 100rem),
+              calc(8 / 1920 * 100rem)
+            );
+            padding-left: clamp(
+              8px,
+              calc(8 / 1920 * 100rem),
+              calc(8 / 1920 * 100rem)
+            );
+          }
+        }
+      }
+
+      &.medium-spacing {
+        margin-left: clamp(
+          -10px,
+          calc(-10 / 1920 * 100rem),
+          calc(-10 / 1920 * 100rem)
+        );
+        margin-right: clamp(
+          -10px,
+          calc(-10 / 1920 * 100rem),
+          calc(-10 / 1920 * 100rem)
+        );
+
+        > [class*="col-"] {
+          @screen xl {
+            padding-right: clamp(
+              10px,
+              calc(10 / 1920 * 100rem),
+              calc(10 / 1920 * 100rem)
+            );
+            padding-left: clamp(
+              10px,
+              calc(10 / 1920 * 100rem),
+              calc(10 / 1920 * 100rem)
+            );
+          }
+        }
+      }
+
+      &.lg-spacing {
+        margin-left: clamp(
+          -12px,
+          calc(-12 / 1920 * 100rem),
+          calc(-12 / 1920 * 100rem)
+        );
+        margin-right: clamp(
+          -12px,
+          calc(-12 / 1920 * 100rem),
+          calc(-12 / 1920 * 100rem)
+        );
+        @apply gap-y-6;
+
+        > [class*="col-"] {
+          @screen xl {
+            padding-right: clamp(
+              12px,
+              calc(12 / 1920 * 100rem),
+              calc(12 / 1920 * 100rem)
+            );
+            padding-left: clamp(
+              12px,
+              calc(12 / 1920 * 100rem),
+              calc(12 / 1920 * 100rem)
+            );
+          }
+        }
+      }
+    }
+
+    > [class*="col-"] {
+      position: relative;
+      width: 100%;
+      padding-right: calc($spacing-mobile / 2);
+      padding-left: calc($spacing-mobile / 2);
+
+      @screen md {
+        padding-right: calc($spacing-md / 2);
+        padding-left: calc($spacing-md / 2);
+      }
+
+      @screen lg {
+        padding-right: calc($spacing-lg / 2);
+        padding-left: calc($spacing-lg / 2);
+      }
+    }
+
+    .col {
+      -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+      -ms-flex-positive: 1;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+
+    &.column-full-no-gutter {
+      @screen -sm {
+        @apply mx-0;
+
+        > [class*="col-"] {
+          @apply px-0;
+        }
+      }
+    }
+  }
+
+  .no-gutters {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .p-0 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .col-auto {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+  }
+
+  @for $col from 1 through $colCount {
+    .col-#{$col} {
+      -ms-flex: 0 0 calc(100% / $colCount * $col);
+      flex: 0 0 calc(100% / $colCount * $col);
+      max-width: calc(100% / $colCount * $col);
+    }
+  }
+
+  @each $bp, $value in $grid-breakpoints {
+    @media (min-width: #{$value}) {
+      .col-#{$bp} {
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        max-width: 100%;
+      }
+
+      .col-#{$bp}-auto {
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 100%;
+      }
+
+      @for $col from 1 through $colCount {
+        .col-#{$bp}-#{$col} {
+          -ms-flex: 0 0 calc(100% / $colCount * $col);
+          flex: 0 0 calc(100% / $colCount * $col);
+          max-width: calc(100% / $colCount * $col);
+        }
+      }
+    }
+  }
+}
+
+/* scroll */

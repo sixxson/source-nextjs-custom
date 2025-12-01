@@ -1,0 +1,11 @@
+.section-2 {
+  .content-title {
+    @apply space-y-5 text-center flex-center flex-col;
+    .title {
+      @apply heading-1 capitalize;
+    }
+    .subTitle {
+      @apply body-1 rem:max-w-[824px];
+    }
+  }
+}

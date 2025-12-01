@@ -1,0 +1,107 @@
+@tailwind components;
+
+@layer components {
+  .swiper-wrapper {  
+    .swiper-slide:nth-child(odd) {
+      .box-banner {
+        @apply relative overflow-hidden;
+
+        .overlay-border {
+          @apply absolute bottom-0 left-0 h-full -lg:h-1/2 border w-[calc(1120/1920*100%)] border-utility-white rounded-r-full;
+        }
+
+        .overlay-blur {
+          @apply absolute bottom-0 right-0 w-[calc(800/1920*100%)] -lg:w-[calc(1120/1920*100%)] h-full -lg:h-1/2 border rounded-l-full backdrop-blur-md bg-white/30 border-utility-white;
+        }
+
+        .content-banner {
+          @apply absolute xl:bottom-[calc(165/1920*100rem)] bottom-[10%] -translate-y-[10%] right-0 -lg:-right-[20%] translate-x-full
+            container flex justify-end items-end flex-col gap-base text-right text-white;
+        }
+
+        .title-banner {
+          @apply rem:max-w-[480px] flex flex-col gap-base justify-end items-end;
+        }
+      }
+    }
+    .swiper-slide:nth-child(even) {
+      .box-banner {
+        @apply relative overflow-hidden;
+
+        .overlay-border {
+          @apply absolute bottom-0 right-0 h-full -lg:h-1/2 border w-[calc(1120/1920*100%)] border-utility-white rounded-l-full;
+        }
+
+        .overlay-blur {
+          @apply absolute bottom-0 left-0 w-[calc(800/1920*100%)] -lg:w-[calc(1120/1920*100%)] h-full -lg:h-1/2 border rounded-r-full backdrop-blur-md bg-white/30 border-utility-white;
+        }
+
+        .content-banner {
+          @apply absolute xl:bottom-[calc(165/1920*100rem)] bottom-[10%] -translate-y-[10%] left-0 -lg:-left-[20%] -translate-x-full
+        container flex justify-start items-start flex-col gap-base text-left text-white;
+        }
+
+        .title-banner {
+          @apply rem:max-w-[480px] flex flex-col gap-base justify-start items-start;
+        }
+      }
+    }
+
+    /* =========================================
+    ANIMATION KHI ACTIVE SLIDE
+    ========================================== */
+
+    .swiper-slide-active {
+      .overlay-border {
+        animation: overlay-border 2s linear forwards;
+        animation-delay: 1s;
+      }
+    }
+    .swiper-slide-active:nth-child(odd) {
+      .box-banner {
+        .content-banner {
+          animation: content-banner 2s linear forwards;
+          animation-delay: 1s;
+        }
+      }
+    }
+    .swiper-slide-active:nth-child(even) {
+      .box-banner {
+        .content-banner {
+          animation: content-banner-reverse 2s linear forwards;
+          animation-delay: 1s;
+        }
+      }
+    }
+  }
+}
+
+/* =========================================
+  KEYFRAMES
+========================================= */
+@keyframes content-banner-reverse {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(20%);
+  }
+}
+
+@keyframes content-banner {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-20%);
+  }
+}
+
+@keyframes overlay-border {
+  0% {
+    width: calc(1120 / 1920 * 100%);
+  }
+  100% {
+    width: 100%;
+  }
+}
