@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Section-2.scss"
-import ImageCustoms from "../../../customUI/ImageCustoms"
-import { Button } from "../../../ui/button"
+import ImageCustoms from "@/components/customUI/ImageCustoms"
+import { Button } from "@/components/ui/button"
 
 
 
@@ -33,7 +33,7 @@ export default function Section2() {
           </div>
           <Button
             variant={'outline'}
-            className="btn-primary font-bold col-span-full">
+            className="btn-primary font-bold col-span-full justify-between">
             Xem ngay siêu phẩm
           </Button>
         </div>

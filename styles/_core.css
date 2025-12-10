@@ -3,8 +3,10 @@
 @import "./core/_slide.css";
 @import "./core/animate.css";
 @import "./_utilities.scss";
+@import "./_components.scss";
 
 @import "swiper/css";
+@import 'swiper/css/grid';
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 @import "swiper/css/effect-fade";
