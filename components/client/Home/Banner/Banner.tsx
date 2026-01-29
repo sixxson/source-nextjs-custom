@@ -5,7 +5,6 @@ import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules'
 import ImageCustoms from '@/components/customUI/ImageCustoms'
 import Link from 'next/link'
 import './Banner.scss'
-import { Button } from '../../../ui/button'
 
 export default function Banner() {
     const slides = []
@@ -58,12 +57,11 @@ export default function Banner() {
                 {slides}
             </Swiper>
             <Link href="#section_1">
-                <Button
-                    variant={'outline'}
+                <div
                     className="text-white heading-2 rem:h-[60px] aspect-square absolute-center-x bottom-5 z-2 p-2.5 rounded-full"
                 >
                     <i className="fa-light fa-arrow-down"></i>
-                </Button>
+                </div>
             </Link>
         </section>
     )
