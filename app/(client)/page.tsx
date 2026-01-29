@@ -1,13 +1,13 @@
-import React from 'react'
+"use client"
 import Banner from "@/components/client/Home/Banner/Banner"
-import Section1 from "@/components/client/Home/Section-1/Section-1"
-import Section2 from "@/components/client/Home/Section-2/Section-2"
-export default function page() {
+
+import { useMenuSpy } from "../../hooks/help/useMenuSpy"
+export default function Page() {
+  useMenuSpy()
   return (
     <>
       <Banner />
-      <Section1 />
-      <Section2 />
+      
     </>
   )
 }

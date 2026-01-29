@@ -1,0 +1,6 @@
+/* sass entry */
+@use "../styles/index.scss" as *;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

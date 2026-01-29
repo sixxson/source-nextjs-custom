@@ -1,0 +1,24 @@
+/* styles/index.scss */
+
+/* core css */
+@use "./core";
+
+/* tailwind layers */
+@use "./styles-base";
+@use "./styles-components";
+@use "./styles-utilities";
+
+// /* import css thuần từ node_modules */
+// @import "swiper/css";
+// @import "swiper/css/grid";
+// @import "swiper/css/navigation";
+// @import "swiper/css/pagination";
+// @import "swiper/css/effect-fade";
+
+
+@function clampVw($minBreakpoint, $min, $max, $maxBreakpoint) {
+    $vw: (($max - $min) / ($maxBreakpoint - $minBreakpoint)) * 100;
+    $intercept: $min - ($vw * $minBreakpoint / 100);
+    //trả về
+    @return clamp(#{$min}, #{$vw}vw + #{$intercept}, #{$max});
+}

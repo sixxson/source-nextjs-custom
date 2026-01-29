@@ -1,0 +1,217 @@
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+
+  html,
+  body {
+    font-size: 17px;
+
+    @screen md {
+      font-size: 17px;
+    }
+
+    @screen xl {
+      font-size: 1vw;
+    }
+  }
+
+  body {
+    @apply text-[#333333] text-base font-primary;
+  }
+
+  .table-responsive {
+    @apply overflow-auto;
+
+    @media (max-width: 767.98px) {
+      table,
+      .table-package-header {
+        width: 900px !important;
+      }
+    }
+  }
+
+  .img-full {
+    img {
+      @apply w-full h-full object-cover;
+    }
+  }
+
+  .img-ratio {
+    position: relative;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    padding-top: 100%;
+
+    img,
+    iframe {
+      @apply absolute top-0 left-0 w-full h-full object-cover transition-all duration-300;
+    }
+  }
+
+  .img-ratio-center {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    padding-top: 100%;
+    @apply flex-center;
+
+    img,
+    iframe {
+      @apply absolute top-1/2 left-1/2 w-auto h-auto object-contain
+        transition-all duration-300 max-w-full max-h-full
+        -translate-x-1/2 -translate-y-1/2;
+    }
+  }
+
+  .div-ratio {
+    position: relative;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    padding-top: 100%;
+
+    > div {
+      @apply absolute top-0 left-0 w-full h-full transition-all duration-300;
+    }
+  }
+
+  .row {
+    @apply flex flex-wrap -mx-[7.5px] xl:-mx-5 gap-y-5;
+  }
+
+  .col {
+    @apply px-[7.5px] xl:px-5 w-full;
+  }
+
+  h1 {
+    @apply text-3xl font-bold;
+  }
+
+  h2 {
+    @apply text-2xl font-bold;
+  }
+
+  h3 {
+    @apply text-xl font-bold;
+  }
+
+  h4 {
+    @apply text-lg font-bold;
+  }
+
+  img {
+    @apply inline max-w-none;
+  }
+
+  a {
+    @apply transition-all ease-linear duration-200;
+  }
+
+  p {
+    @apply empty:hidden;
+  }
+
+  input {
+    @apply outline-offset-0 shadow-none ring-0 !important;
+  }
+
+  .section {
+    @apply py-12.5 lg:py-20;
+  }
+
+  .section-40 {
+    @apply py-6 lg:py-10;
+  }
+
+  .margin-p {
+    p {
+      & + p {
+        @apply mt-5;
+      }
+    }
+  }
+
+  .overflow-scroll-1 {
+    &::-webkit-scrollbar {
+      @apply w-[calc(6/1920*100rem)];
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: rgba(#e5e5e5, 0.2);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #f1f1f1;
+    }
+  }
+
+  body.disable-scroll {
+    @apply overflow-hidden;
+  }
+
+  .format-content {
+    p {
+      @apply mb-3;
+    }
+
+    ul {
+      @apply list-disc pl-5 flex flex-col gap-3 mb-3;
+    }
+  }
+
+  .overlay-black {
+    @apply relative z-2;
+
+    &::before {
+      content: '';
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0.75) 100%
+      );
+      @apply absolute top-0 left-0 w-full h-full -z-1 pointer-events-none;
+    }
+  }
+
+  .mb-base {
+    @apply mb-8 lg:mb-10;
+  }
+
+  .stretched-link {
+    &::before {
+      content: '';
+      @apply absolute-full z-1 pointer-events-auto;
+    }
+  }
+
+  .item-wrap-expander-content {
+    &:not(.disable-hover) {
+      &:hover {
+        .wrap-expander-content {
+          grid-template-rows: 1fr !important;
+
+          .expander-content {
+            @apply visible;
+          }
+        }
+      }
+    }
+
+    .wrap-expander-content {
+      grid-template-rows: 0fr !important;
+      transition: grid-template-rows 0.6s;
+      overflow: hidden;
+      @apply grid;
+    }
+
+    .expander-content {
+      min-height: 0;
+      transition: visibility 1s;
+      visibility: hidden;
+      @apply mb-0;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@layer utilities {
+  .section-py {
+    @apply py-10 lg:py-15 xl:py-20;
+  }
+
+  .no-gutters {
+    @apply mx-0;
+
+    > * {
+      @apply px-0;
+    }
+  }
+
+  .lozad {
+    opacity: 0;
+    filter: blur(10px);
+    transition: 0.3s all ease-in-out;
+
+    &[data-loaded='true'] {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+}

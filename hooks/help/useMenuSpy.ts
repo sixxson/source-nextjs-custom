@@ -1,18 +1,28 @@
 "use client";
+
 import { useEffect } from "react";
-import MenuSpy from "menuspy";
 
 export function useMenuSpy() {
   useEffect(() => {
-    const elm = document.querySelector("#menu-spy");
-    if (!elm) return;
+    let menuSpyInstance: any;
 
-    new MenuSpy(elm as HTMLElement, {
-      activeClass: "active",
-      threshold: 300,
-      callback: (currentItem) => {
-        console.log("Active item:", currentItem);
-      },
-    });
+    const init = async () => {
+      const MenuSpy = (await import("menuspy")).default;
+
+      const elm = document.querySelector("#menu-spy") as HTMLElement;
+      if (!elm) return;
+
+      menuSpyInstance = new MenuSpy(elm, {
+        activeClass: "active",
+        threshold: 300,
+      });
+    };
+
+    init();
+
+    return () => {
+      // cleanup nếu lib hỗ trợ
+      menuSpyInstance?.destroy?.();
+    };
   }, []);
 }

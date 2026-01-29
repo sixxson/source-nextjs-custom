@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "./globals.scss";
+// app/layout.tsx hoặc pages/_app.tsx
+import "swiper/css";
+import "swiper/css/grid";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
+
 import { ThemeProvider } from "../components/Theme/Theme-provider";
 import Providers from "../components/Providers";
 

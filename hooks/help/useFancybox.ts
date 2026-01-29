@@ -1,17 +1,18 @@
-import { useState, useEffect } from "react";
+"use client";
 
-import { type FancyboxOptions, Fancybox } from "@fancyapps/ui/dist/fancybox/";
+import { useEffect } from "react";
+import { Fancybox, type FancyboxOptions } from "@fancyapps/ui";
+
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
-export default function useFancybox(options: Partial<FancyboxOptions> = {}) {
-  const [root, setRoot] = useState<HTMLElement | null>(null);
-
+export function useFancybox(
+  options: Partial<FancyboxOptions> = {}
+) {
   useEffect(() => {
-    if (root) {
-      Fancybox.bind(root, "[data-fancybox]", options);
-      return () => Fancybox.unbind(root);
-    }
-  }, [root, options]);
+    Fancybox.bind("[data-fancybox]", options);
 
-  return [setRoot];
+    return () => {
+      Fancybox.unbind("[data-fancybox]");
+    };
+  }, [options]);
 }
