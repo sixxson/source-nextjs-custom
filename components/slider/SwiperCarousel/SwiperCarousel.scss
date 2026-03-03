@@ -1,0 +1,34 @@
+.swiper-carousel-wrapper {
+    position: relative;
+    width: 100%;
+
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Custom Navigation */
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #fff;
+        &::after {
+            font-size: 1.5rem;
+        }
+    }
+
+    /* Custom Pagination */
+    .swiper-pagination-bullet {
+        background: #fff;
+        opacity: 0.5;
+        &-active {
+            opacity: 1;
+            background: #fff;
+        }
+    }
+}

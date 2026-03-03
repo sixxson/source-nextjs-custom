@@ -9,21 +9,20 @@ export default function ImageCustoms({
   alt,
 }: {
   src?: string;
-  className?: string;
-  alt?: string;
+	className?: string;
+	alt?: string;
 }) {
-  useEffect(() => {
-    const observer = lozad(); // khởi tạo observer
-    observer.observe();
+	useEffect(() => {
+	const observer = lozad(); // khởi tạo observer
+	observer.observe();
   }, []);
 
   return (
-    <img
-      data-src={src}
-      alt={alt}
-      className={cn("lozad", className)}
-    />
+	<img
+		data-src={src}
+		alt={alt}
+		className={cn("lozad", className)}
+	/>
   );
 }
 
-  
