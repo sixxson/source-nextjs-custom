@@ -1,110 +1,97 @@
 .embla {
-    --slide-spacing: 1rem;
-    --slide-size: 100%;
-    --slide-height: 19rem;
-    padding: 1.6rem;
+	&__viewport {
+		overflow: hidden;
+	}
 
-    &__viewport {
-        overflow: hidden;
-    }
+	&__container {
+		display: flex;
+		backface-visibility: hidden;
+		touch-action: pan-y pinch-zoom;
+	}
 
-    &__container {
-        display: flex;
-        backface-visibility: hidden;
-        touch-action: pan-y pinch-zoom;
-        margin-left: calc(var(--slide-spacing) * -1);
-    }
+	&__slide {
+		min-width: 0;
+	}
 
-    &__slide {
-        flex: 0 0 var(--slide-size);
-        min-width: 0;
-        padding-left: var(--slide-spacing);
+	&__controls {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 1.6rem;
+	}
 
-        &__img {
-            display: block;
-            height: var(--slide-height);
-            width: 100%;
-            object-fit: cover;
-        }
-    }
+	&__buttons {
+		display: flex;
+		gap: 0.8rem;
+	}
 
-    &__controls {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 1.6rem;
-    }
+	&__button {
+		appearance: none;
+		background-color: transparent;
+		touch-action: manipulation;
+		display: inline-flex;
+		text-decoration: none;
+		cursor: pointer;
+		border: 0;
+		padding: 0;
+		margin: 0;
+		width: 3.6rem;
+		height: 3.6rem;
+		z-index: 1;
+		border-radius: 50%;
+		color: #333;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid #ccc;
 
-    &__buttons {
-        display: flex;
-        gap: 0.8rem;
-    }
+		&:disabled {
+			opacity: 0.3;
+			cursor: default;
+		}
+	}
 
-    &__button {
-        appearance: none;
-        background-color: transparent;
-        touch-action: manipulation;
-        display: inline-flex;
-        text-decoration: none;
-        cursor: pointer;
-        border: 0;
-        padding: 0;
-        margin: 0;
-        width: 3.6rem;
-        height: 3.6rem;
-        z-index: 1;
-        border-radius: 50%;
-        color: #333;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid #ccc;
+	&__dots {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-end;
+		align-items: center;
+		margin-right: -0.6rem;
+	}
 
-        &:disabled {
-            opacity: 0.3;
-            cursor: default;
-        }
-    }
+	&__dot {
+		appearance: none;
+		background-color: transparent;
+		touch-action: manipulation;
+		display: inline-flex;
+		cursor: pointer;
+		border: 0;
+		padding: 0;
+		margin: 0;
+		width: 2.6rem;
+		height: 2.6rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
 
-    &__dots {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        align-items: center;
-        margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
-    }
+		&:after {
+			box-shadow: inset 0 0 0 0.2rem #ccc;
+			width: 1.2rem;
+			height: 1.2rem;
+			border-radius: 50%;
+			content: '';
+		}
 
-    &__dot {
-        -webkit-tap-highlight-color: rgba(rgb(49, 49, 49), 0.5);
-        -webkit-appearance: none;
-        appearance: none;
-        background-color: transparent;
-        touch-action: manipulation;
-        display: inline-flex;
-        text-decoration: none;
-        cursor: pointer;
-        border: 0;
-        padding: 0;
-        margin: 0;
-        width: 2.6rem;
-        height: 2.6rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
+		&--selected:after {
+			box-shadow: inset 0 0 0 0.2rem #333;
+		}
+	}
+}
 
-        &:after {
-            box-shadow: inset 0 0 0 0.2rem #ccc;
-            width: 1.4rem;
-            height: 1.4rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            content: '';
-        }
-
-        &--selected:after {
-            box-shadow: inset 0 0 0 0.2rem #333;
-        }
-    }
+// Custom utility for flex-center if not in tailwind
+.flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
